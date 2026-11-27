@@ -1,0 +1,6 @@
+{
+  "name": "My Little Baby – Math & Care Adventure",
+  "description": "Game edukasi matematika SD (Kelas 1–6) dan simulasi merawat bayi virtual 2.5D interaktif dengan kustomisasi karakter, toko, inventaris, dan tantangan harian.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

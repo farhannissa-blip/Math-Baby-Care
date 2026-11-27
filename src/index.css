@@ -1,0 +1,610 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Fredoka', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono-num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  50% { transform: scaleY(1.028) scaleX(0.985); }
+}
+
+@keyframes bounceHappy {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  30% { transform: translateY(-14px) scale(0.96, 1.05); }
+  60% { transform: translateY(0) scale(1.04, 0.96); }
+}
+
+@keyframes crawlMove {
+  0%, 100% { transform: translateX(0px) rotate(0deg); }
+  25% { transform: translateX(-10px) rotate(-2deg); }
+  75% { transform: translateX(10px) rotate(2deg); }
+}
+
+@keyframes waveHand {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-18deg); }
+  75% { transform: rotate(18deg); }
+}
+
+@keyframes particleRise {
+  0% { transform: translateY(0) scale(0.7); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-64px) scale(1.15); opacity: 0; }
+}
+
+@keyframes coinFall {
+  0% { transform: translateY(-40px) rotate(0deg) scale(0.8); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateY(140px) rotate(360deg) scale(1.1); opacity: 0; }
+}
+
+@keyframes curtainSway {
+  0%, 100% { transform: skewX(0deg) scaleX(1); }
+  50% { transform: skewX(2.4deg) scaleX(1.03); }
+}
+
+@keyframes curtainSwayRight {
+  0%, 100% { transform: skewX(0deg) scaleX(1); }
+  50% { transform: skewX(-2.4deg) scaleX(1.03); }
+}
+
+@keyframes steamRise {
+  0% { transform: translateY(0px) scaleX(0.9); opacity: 0; }
+  35% { opacity: 0.72; }
+  100% { transform: translateY(-28px) scaleX(1.2); opacity: 0; }
+}
+
+@keyframes sleepyNod {
+  0%, 100% { transform: rotate(0deg) translateY(0px); }
+  45% { transform: rotate(4.5deg) translateY(4px); }
+  70% { transform: rotate(-1.5deg) translateY(1px); }
+}
+
+@keyframes carriedSway {
+  0%, 100% { transform: rotate(-2.5deg) translateY(0px); }
+  50% { transform: rotate(2.5deg) translateY(-4px); }
+}
+
+@keyframes limbDangleLeft {
+  0%, 100% { transform: rotate(8deg); }
+  50% { transform: rotate(22deg); }
+}
+
+@keyframes limbDangleRight {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(-22deg); }
+}
+
+@keyframes sleepBreathe {
+  0% { transform: scaleY(1) scaleX(1) translateY(0px); }
+  40% { transform: scaleY(1.026) scaleX(1.012) translateY(-0.8px); }
+  50% { transform: scaleY(1.023) scaleX(1.01) translateY(-0.6px); }
+  84% { transform: scaleY(0.997) scaleX(0.999) translateY(0.2px); }
+  100% { transform: scaleY(1) scaleX(1) translateY(0px); }
+}
+
+/* For baby lying horizontally in bed (parent rotated -82deg): local +X points upward off the mattress */
+@keyframes sleepBreatheLying {
+  0% { transform: scaleX(1) scaleY(1) translateX(0px); }
+  40% { transform: scaleX(1.036) scaleY(1.013) translateX(1.6px); }
+  50% { transform: scaleX(1.032) scaleY(1.011) translateX(1.3px); }
+  84% { transform: scaleX(0.996) scaleY(0.998) translateX(-0.3px); }
+  100% { transform: scaleX(1) scaleY(1) translateX(0px); }
+}
+
+/* Synchronized 4.4s physiological rhythm with sleepBreatheLying so blanket rises/falls with chest */
+@keyframes blanketBreathe {
+  0% { transform: translateY(0px) scaleY(1) scaleX(1); }
+  40% { transform: translateY(-2.8px) scaleY(1.042) scaleX(1.008); }
+  50% { transform: translateY(-2.5px) scaleY(1.038) scaleX(1.006); }
+  84% { transform: translateY(0.3px) scaleY(0.996) scaleX(1); }
+  100% { transform: translateY(0px) scaleY(1) scaleX(1); }
+}
+
+@keyframes waterRipple {
+  0%, 100% { transform: translateX(0px) scaleX(1); opacity: 0.65; }
+  50% { transform: translateX(6px) scaleX(1.06); opacity: 0.9; }
+}
+
+@keyframes wakingStretch {
+  0% { transform: scaleY(0.96) translateY(4px); }
+  45% { transform: scaleY(1.06) translateY(-6px); }
+  100% { transform: scaleY(1) translateY(0px); }
+}
+
+@keyframes zzzFloatSlow {
+  0% {
+    transform: translate(0px, 6px) scale(0.52) rotate(-10deg);
+    opacity: 0;
+  }
+  16% {
+    transform: translate(7px, -8px) scale(0.76) rotate(-3deg);
+    opacity: 0.92;
+  }
+  42% {
+    transform: translate(15px, -28px) scale(0.94) rotate(7deg);
+    opacity: 0.95;
+  }
+  72% {
+    transform: translate(10px, -52px) scale(1.08) rotate(-4deg);
+    opacity: 0.72;
+  }
+  100% {
+    transform: translate(22px, -76px) scale(1.2) rotate(8deg);
+    opacity: 0;
+  }
+}
+
+@keyframes zzzFloatDrift {
+  0% {
+    transform: translate(2px, 8px) scale(0.48) rotate(8deg);
+    opacity: 0;
+  }
+  18% {
+    transform: translate(-5px, -10px) scale(0.74) rotate(-6deg);
+    opacity: 0.88;
+  }
+  48% {
+    transform: translate(11px, -32px) scale(0.92) rotate(6deg);
+    opacity: 0.9;
+  }
+  76% {
+    transform: translate(19px, -56px) scale(1.06) rotate(-5deg);
+    opacity: 0.62;
+  }
+  100% {
+    transform: translate(14px, -82px) scale(1.16) rotate(5deg);
+    opacity: 0;
+  }
+}
+
+@keyframes sleepSparkleFloat {
+  0% {
+    transform: translate(0px, 4px) scale(0.4) rotate(0deg);
+    opacity: 0;
+  }
+  28% {
+    transform: translate(6px, -18px) scale(0.95) rotate(25deg);
+    opacity: 0.82;
+  }
+  68% {
+    transform: translate(-4px, -44px) scale(0.75) rotate(-15deg);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate(8px, -68px) scale(0.35) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 3.2s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 2.8s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-sleep-breathe {
+  animation: sleepBreathe 4.4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  transform-origin: 50% 82%;
+  will-change: transform;
+}
+
+.animate-sleep-breathe-lying {
+  animation: sleepBreatheLying 4.4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  transform-origin: 50% 56%;
+  will-change: transform;
+}
+
+.animate-bounce-happy {
+  animation: bounceHappy 0.85s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-crawl {
+  animation: crawlMove 2.2s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-particle-rise {
+  animation: particleRise 1.6s ease-out forwards;
+}
+
+.animate-coin-fall {
+  animation: coinFall 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-curtain-left {
+  animation: curtainSway 5.5s ease-in-out infinite;
+  transform-origin: top left;
+}
+
+.animate-curtain-right {
+  animation: curtainSwayRight 5.5s ease-in-out infinite;
+  transform-origin: top right;
+}
+
+.animate-steam-1 {
+  animation: steamRise 2.4s ease-in-out infinite;
+}
+
+.animate-steam-2 {
+  animation: steamRise 2.4s ease-in-out 0.8s infinite;
+}
+
+.animate-steam-3 {
+  animation: steamRise 2.4s ease-in-out 1.6s infinite;
+}
+
+.animate-sleepy-nod {
+  animation: sleepyNod 3.2s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-carried-sway {
+  animation: carriedSway 1.1s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.animate-limb-left {
+  animation: limbDangleLeft 0.95s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-limb-right {
+  animation: limbDangleRight 0.95s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-blanket-breathe {
+  animation: blanketBreathe 4.4s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 95%;
+  will-change: transform;
+}
+
+.animate-water-ripple {
+  animation: waterRipple 2.8s ease-in-out infinite;
+}
+
+.animate-waking-stretch {
+  animation: wakingStretch 1.4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes sandBuildLeft {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  30% {
+    transform: rotate(-18deg) translate(2px, -6px);
+  }
+  60% {
+    transform: rotate(12deg) translate(4px, 5px);
+  }
+}
+
+@keyframes sandBuildRight {
+  0%, 100% {
+    transform: rotate(10deg) translate(-3px, 4px);
+  }
+  35% {
+    transform: rotate(-20deg) translate(-2px, -7px);
+  }
+  70% {
+    transform: rotate(14deg) translate(-4px, 5px);
+  }
+}
+
+@keyframes sandDigLeft {
+  0%, 100% {
+    transform: rotate(6deg) translate(0px, 0px);
+  }
+  45% {
+    transform: rotate(-28deg) translate(4px, 8px);
+  }
+  75% {
+    transform: rotate(16deg) translate(-3px, -5px);
+  }
+}
+
+@keyframes sandDigRight {
+  0%, 100% {
+    transform: rotate(-16deg) translate(3px, -5px);
+  }
+  40% {
+    transform: rotate(28deg) translate(-4px, 8px);
+  }
+  80% {
+    transform: rotate(-8deg) translate(0px, 0px);
+  }
+}
+
+@keyframes picnicEatHand {
+  0%, 100% {
+    transform: rotate(0deg) translateY(0px);
+  }
+  40% {
+    transform: rotate(26deg) translate(-6px, -12px);
+  }
+  65% {
+    transform: rotate(20deg) translate(-5px, -10px);
+  }
+}
+
+@keyframes beachRelaxSway {
+  0%, 100% {
+    transform: translateY(0px) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(1.5deg);
+  }
+}
+
+@keyframes shellPopOut {
+  0% {
+    transform: translate(-50%, -50%) scale(0.2) translateY(16px);
+    opacity: 0;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(1.18) translateY(-6px);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
+
+.animate-sand-build-left {
+  animation: sandBuildLeft 0.72s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-sand-build-right {
+  animation: sandBuildRight 0.72s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-sand-dig-left {
+  animation: sandDigLeft 0.56s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-sand-dig-right {
+  animation: sandDigRight 0.56s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-picnic-eat-hand {
+  animation: picnicEatHand 1.15s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-beach-relax {
+  animation: beachRelaxSway 3.6s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-shell-pop {
+  animation: shellPopOut 0.52s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes angklungShake {
+  0%, 100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  20% {
+    transform: translateX(-5px) rotate(-7deg);
+  }
+  45% {
+    transform: translateX(5px) rotate(7deg);
+  }
+  70% {
+    transform: translateX(-4px) rotate(-5deg);
+  }
+  90% {
+    transform: translateX(4px) rotate(5deg);
+  }
+}
+
+@keyframes angklungArmLeft {
+  0%, 100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-4px) rotate(-6deg);
+  }
+  75% {
+    transform: translateX(4px) rotate(6deg);
+  }
+}
+
+@keyframes angklungArmRight {
+  0%, 100% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-5px) rotate(8deg);
+  }
+  75% {
+    transform: translateX(5px) rotate(-8deg);
+  }
+}
+
+@keyframes tradDanceBody {
+  0%, 100% {
+    transform: translateY(0px) rotate(-3.5deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(1px) rotate(3.5deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(0deg);
+  }
+}
+
+@keyframes tradDanceArmLeft {
+  0%, 100% {
+    transform: rotate(-16deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(18deg) translateY(-7px);
+  }
+}
+
+@keyframes tradDanceArmRight {
+  0%, 100% {
+    transform: rotate(18deg) translateY(-7px);
+  }
+  50% {
+    transform: rotate(-16deg) translateY(0px);
+  }
+}
+
+@keyframes danceSelendang {
+  0%, 100% {
+    transform: skewX(-6deg) translateY(0px);
+  }
+  50% {
+    transform: skewX(7deg) translateY(-4px);
+  }
+}
+
+.animate-angklung-shake {
+  animation: angklungShake 0.28s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center center;
+}
+
+.animate-angklung-arm-left {
+  animation: angklungArmLeft 0.28s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-angklung-arm-right {
+  animation: angklungArmRight 0.28s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-trad-dance-body {
+  animation: tradDanceBody 1.55s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-trad-dance-arm-left {
+  animation: tradDanceArmLeft 1.55s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-trad-dance-arm-right {
+  animation: tradDanceArmRight 1.55s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-dance-selendang {
+  animation: danceSelendang 1.55s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: top center;
+}
+
+.animate-zzz-1 {
+  opacity: 0;
+  animation: zzzFloatSlow 4.8s ease-in-out 0s infinite both;
+  will-change: transform, opacity;
+}
+
+.animate-zzz-2 {
+  opacity: 0;
+  animation: zzzFloatDrift 5.2s ease-in-out 1.2s infinite both;
+  will-change: transform, opacity;
+}
+
+.animate-zzz-3 {
+  opacity: 0;
+  animation: zzzFloatSlow 5.4s ease-in-out 2.5s infinite both;
+  will-change: transform, opacity;
+}
+
+.animate-zzz-4 {
+  opacity: 0;
+  animation: zzzFloatDrift 5.0s ease-in-out 3.7s infinite both;
+  will-change: transform, opacity;
+}
+
+.animate-sleep-sparkle-1 {
+  opacity: 0;
+  animation: sleepSparkleFloat 5.6s ease-in-out 0.7s infinite both;
+  will-change: transform, opacity;
+}
+
+.animate-sleep-sparkle-2 {
+  opacity: 0;
+  animation: sleepSparkleFloat 6.2s ease-in-out 2.9s infinite both;
+  will-change: transform, opacity;
+}
+
+/* Custom subtle scrollbars inside modals only */
+.modal-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.modal-scroll::-webkit-scrollbar-track {
+  background: rgba(45, 37, 32, 0.04);
+  border-radius: 9999px;
+}
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(45, 37, 32, 0.18);
+  border-radius: 9999px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
